@@ -1,0 +1,46 @@
+<form ng-submit="formCtrl.addNewItem(formCtrl.newItem)" novalidate name="newTask" ng-controller="TaskFormController as formCtrl">
+    <div class="row" >
+        <div class="form-group col-md-2">
+            <label for="action">Action:</label>
+            <input required
+                    id="action" name="action"
+                    class="form-control"
+                    ng-model="formCtrl.newItem.action"/>
+        </div>
+        <div class="form-group col-md-2">
+            <label for="action">Deadline:</label>
+            <input type="date" required
+                   id="deadline" name="deadline"
+                   class="form-control"
+                   ng-model="formCtrl.newItem.deadline"/>
+        </div>
+        <div class="form-group col-md-2">
+            <label for="action">Responsible:</label>
+            <input type="text" required
+                   id="responsible" name="responsible"
+                   class="form-control"
+                   ng-model="formCtrl.newItem.responsible"/>
+        </div>
+        <div class="form-group col-md-2">
+            <label for="action">Est. Hours:</label>
+            <input type="number" required
+                   id="estimateHours" name="estimateHours"
+                   class="form-control"
+                   ng-model="formCtrl.newItem.estimateHours"/>
+        </div>
+        <div class="form-group col-md-2 col-md-push-2 align-right">
+            <label for="action">Controls:</label>
+            <div>
+                <button type="submit"
+                        class="btn btn-primary pull-right"
+                        ng-disabled="!newTask.$valid">Add
+                </button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<!--Responsible (date)-->
+<!-- -	Responsible (string)-->
+<!-- -	Est. Hours (number)-->
+<!-- -	Other fields (optional)-->

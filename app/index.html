@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-controller="MainController as mainCtrl">
+<head>
+	<meta charset="utf-8">
+	<title>{{::mainCtrl.todo.user}}'s TO DO List</title>
+	<link href="vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="vendor/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
+	<link href="css/main.css" rel="stylesheet">
+	<link href="css/ng-cloak.css" rel="stylesheet">
+</head>
+<body ng-cloak>
+	<main></main>
+
+	<script src="vendor/angular/angular.min.js"></script>
+	<script src="vendor/angular-sanitize/angular-sanitize.min.js"></script>
+
+	<script src="app.js"></script>
+
+	<script src="common/todo.service.js"></script>
+	<script src="common/main.controller.js"></script>
+	<script src="main/task-list/task-list.controller.js"></script>
+	<script src="main/task-form/task-form.controller.js"></script>
+	<script src="common/checked-items.js"></script>
+	<script src="common/user.js"></script>
+
+	<script src="main/main-header/main-header.directive.js"></script>
+	<script src="main/task-list/task-list.directive.js"></script>
+	<script src="main/task-form/task-form.directive.js"></script>
+	<script src="main/main.directive.js"></script>
+</body>
+</html>

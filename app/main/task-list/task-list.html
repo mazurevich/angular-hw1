@@ -1,0 +1,67 @@
+<div class="panel-body" ng-controller="TaskListController as tasksCtrl">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Description</th>
+            <th>Deadline</th>
+            <th>Done</th>
+            <th>Responsible</th>
+            <th>Est. Hours</th>
+            <th class="text-right">Commands</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="item in tasksCtrl.todo.items | checkedItems: tasksCtrl.showComplete | orderBy: 'id'"
+            ng-class="{overdue: (!item.done)&&(item.deadline.getTime()<tasksCtrl.now)}">
+            <td class="col-md-2">
+                <span ng-hide="item.isEditing">{{item.action}}</span>
+                <input type="text" class="form-control" ng-model="item.action" ng-show="item.isEditing">
+            </td>
+            <td class="col-md-2">
+                <span ng-hide="item.isEditing">{{item.deadline | date: 'dd/MM/yyyy'}}</span>
+                <input type="date" class="form-control" ng-model="item.deadline" ng-show="item.isEditing"></td>
+            </td>
+            <td class="col-md-2">
+                <span ng-hide="item.isEditing">{{item.done ? 'Yes':'No'}}</span>
+                <input ng-show="item.isEditing" type="checkbox" ng-model="item.done">
+            </td>
+            <td class="col-md-2">
+                <span ng-hide="item.isEditing">{{item.responsible}}</span>
+                <input type="text" class="form-control" ng-model="item.responsible" ng-show="item.isEditing"></td>
+            </td>
+            <td>
+                <span ng-hide="item.isEditing">{{item.estimateHours}}</span>
+                <input type="number" class="form-control" ng-model="item.estimateHours" ng-show="item.isEditing"></td>
+            </td>
+            <td class="text-right col-md-2">
+                <button
+                        type="button"
+                        ng-click="tasksCtrl.toggleEditing(item)"
+                        class="btn btn-primary">
+					<span class="glyphicon glyphicon-edit" aria-hidden="true"
+                          title="Edit"></span>
+                </button>
+                <button
+                        type="button"
+                        ng-click="tasksCtrl.removeItem(item)"
+                        class="btn btn-danger">
+					<span class="glyphicon glyphicon-trash" aria-hidden="true"
+                          title="Delete"></span>
+                </button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="row">
+        <div class="col-md-12">
+            <label>
+                <input type="checkbox" ng-model="tasksCtrl.showComplete">Show Complete
+            </label>
+            <button ng-show="tasksCtrl.showRemoveCompleted"
+                    ng-click="tasksCtrl.removeAllCompleted()"
+                    class="btn btn-danger pull-right">Remove All Completed
+            </button>
+        </div>
+    </div>
+</div>
