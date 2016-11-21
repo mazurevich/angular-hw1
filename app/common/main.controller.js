@@ -7,13 +7,20 @@
     angular.module("app")
         .controller("MainController", MainController);
 
-    function MainController(model, todoService) {
+    MainController.$inject = ['model', 'todoService', 'rankService'];
+    function MainController(model, todoService, rankService) {
         let $ctrl = this;
         $ctrl.todo = model;
 
         $ctrl.incompleteCount = todoService.incompleteCount;
         $ctrl.warningLevel = todoService.warningLevel;
+
+        console.log(rankService.getStars(100));
+        console.log(rankService.getStars(200));
+        console.log(rankService.getStars(500));
+        console.log(rankService.getStars(1000));
+        console.log(rankService.getStars(300));
     }
 
-    MainController.$inject = ['model', 'todoService'];
+
 })();
